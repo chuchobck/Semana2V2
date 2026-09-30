@@ -4,7 +4,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
-import { ProductosResolver } from './productos/productos.resolver.js';
+import { ProductosModule } from './productos/productos.module.js';
 
 @Module({
   imports: [
@@ -12,8 +12,9 @@ import { ProductosResolver } from './productos/productos.resolver.js';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'schema.gql'),
     }),
+    ProductosModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ProductosResolver],
+  providers: [AppService],
 })
 export class AppModule {}
