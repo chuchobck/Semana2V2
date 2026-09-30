@@ -14,14 +14,18 @@ export class ProductosService {
   constructor(private readonly http: HttpService) {}
 
   async findAll(): Promise<Producto[]> {
-    const { data } = await firstValueFrom(this.http.get<Producto[]>(PRODUCTOS_API_URL));
+    const { data } = await firstValueFrom(
+      this.http.get<Producto[]>(PRODUCTOS_API_URL),
+    );
     return data;
   }
 
   /** Devuelve null si la API responde 404 (el id no existe). */
   async findOne(id: number): Promise<Producto | null> {
     try {
-      const { data } = await firstValueFrom(this.http.get<Producto>(`${PRODUCTOS_API_URL}/${id}`));
+      const { data } = await firstValueFrom(
+        this.http.get<Producto>(`${PRODUCTOS_API_URL}/${id}`),
+      );
       return data;
     } catch (error) {
       if (isAxiosError(error) && error.response?.status === 404) {

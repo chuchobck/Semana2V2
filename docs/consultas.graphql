@@ -1,0 +1,60 @@
+# Consultas de la práctica. Pega cada una en Apollo Sandbox (http://localhost:3000/graphql).
+
+# Paso 4: todos los productos con todos sus campos
+query TodosLosProductos {
+  productos {
+    id
+    nombre
+    precio
+  }
+}
+
+# Paso 4: un producto por id (API del curso: 1, 3, 4 · tu API: 1, 2)
+query ProductoPorId {
+  productoPorId(id: 3) {
+    id
+    nombre
+    precio
+  }
+}
+
+# Paso 5: overfetching. Solo pedimos el nombre y solo recibimos el nombre
+query SoloNombres {
+  productos {
+    nombre
+  }
+}
+
+# Paso 5: lista + detalle en UNA sola petición (en REST serían 2)
+query ListaYDetalle {
+  productos {
+    nombre
+  }
+  productoPorId(id: 4) {
+    nombre
+  }
+}
+
+# Paso 7 (reto): productos con precio <= precioMaximo
+query Baratos50 {
+  productosBaratos(precioMaximo: 50) {
+    nombre
+    precio
+  }
+}
+
+query Baratos100 {
+  productosBaratos(precioMaximo: 100) {
+    nombre
+    precio
+  }
+}
+
+# Con variables (pestaña "Variables" de Sandbox: { "max": 80 })
+query BaratosConVariable($max: Float!) {
+  productosBaratos(precioMaximo: $max) {
+    id
+    nombre
+    precio
+  }
+}

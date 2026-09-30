@@ -1,7 +1,7 @@
 {
   "name": "nestjs-productos-graphql",
   "version": "0.0.1",
-  "description": "",
+  "description": "Servidor GraphQL con NestJS que consume una API REST de productos (Semana 4)",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
@@ -51,5 +51,8 @@
     "typescript": "^6.0.2",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.1.2"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

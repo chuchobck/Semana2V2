@@ -1,4 +1,4 @@
-import { Resolver, Query, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Args, Int, Float } from '@nestjs/graphql';
 import { Producto } from './models/producto.model.js';
 import { ProductosService } from './productos.service.js';
 
@@ -12,7 +12,16 @@ export class ProductosResolver {
   }
 
   @Query(() => Producto, { nullable: true })
-  productoPorId(@Args('id', { type: () => Int }) id: number): Promise<Producto | null> {
+  productoPorId(
+    @Args('id', { type: () => Int }) id: number,
+  ): Promise<Producto | null> {
     return this.productosService.findOne(id);
+  }
+
+  @Query(() => [Producto])
+  productosBaratos(
+    @Args('precioMaximo', { type: () => Float }) precioMaximo: number,
+  ): Promise<Producto[]> {
+    return this.productosService.findBaratos(precioMaximo);
   }
 }

@@ -1,0 +1,14 @@
+# Blueprint de Render: despliega este servidor GraphQL como Web Service.
+# En Render: New > Blueprint > selecciona este repositorio.
+services:
+  - type: web
+    name: nestjs-productos-graphql
+    runtime: node
+    plan: free
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: PRODUCTOS_API_URL
+        value: https://practica2-1-6kvj.onrender.com/api/v1/productos
