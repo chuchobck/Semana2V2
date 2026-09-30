@@ -357,8 +357,9 @@ El repositorio incluye [render.yaml](render.yaml).
 
 1. Sube el repo a GitHub:
    ```bash
-   git remote add origin https://github.com/<tu-usuario>/nestjs-productos-graphql.git
-   git push -u origin master
+   git remote add origin https://github.com/chuchobck/Semana2V2.git
+   git branch -M main
+   git push -u origin main
    ```
 2. En Render: **New → Blueprint** → elige el repositorio. O, a mano, **New → Web Service** con:
    - Build Command: `npm ci --include=dev && npm run build`
